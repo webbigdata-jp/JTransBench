@@ -15,10 +15,19 @@ source venv/bin/activate
 (2)ライブラリのインストール (Installing libraries)
 
 ```
+git clone https://github.com/webbigdata-jp/JTransBench
+cd JTransBench
+git submodule update --init --recursive
 pip install -r requirements.txt
 ```
 
-## 簡単な使い方 (How to use simple)
+ライブラリのインストールで何かトラブルがあったら謝辞一覧に記載した参照元プロジェクトのドキュメントを見ると解決が早いかもしれません。  
+本プロジェクトは特殊な事はやっていません   
+
+If you have any trouble installing the library, you may be able to find a solution quickly by looking at the documentation for the reference projects listed in the acknowledgements.  
+This project is not doing anything special.   
+
+## 簡単な使い方 (How to use simple version)
 
 ```
 # datasets download
@@ -27,6 +36,10 @@ python3 1_datasetup.py
 # あなたの環境で翻訳を行う
 # dataset/use配下の好きな.refファイルと.srcファイルをwork/配下にコピーし、翻訳結果を拡張子hypファイルとして保存する
 # transformers用(2_1_transformer_translate_sample.py)とgguf用(2_2_gguf_translate_sample.py)のサンプルスクリプトがあります
+
+mkdir work
+cp dataset/use/<your_target_file>.src ./work
+cp dataset/use/<your_target_file>.ref ./work
 
 # Translate in your environment
 # Copy any .ref and .src files under dataset/use to work/ and save the translation results as a .hyp file.
@@ -131,12 +144,12 @@ Please modify the configuration file stored under conf as appropriate and run yo
 同名の設定ファイルがconf以下にあるので適宜変更してください  
 There is a configuration file with the same name under conf, so please change it as appropriate.  
 
-実行には以下のライブラリの追加インストールが必要です  
-The following libraries must be installed to run the program  
+実行には以下のライブラリの追加インストールが必要になる事があります  
+To run this program, you may need to install the following libraries  
 
 ```
-peft==0.11.1
-bitsandbytes==0.43.1
+pip install peft
+pip install bitsandbytes
 
 python3 2_1_transformer_translate_sample.py  --input work --output work --config conf/2_1_transformer_translate_sample.conf
 
@@ -180,6 +193,9 @@ A GPU is required to run comet.
 
 cometは三種類存在します。最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLです。
 XCOMET-XXLは10.7Bサイズのモデルであり 15GB程度のGPUメモリでは動かす事ができないのでコメントにしてあります
+
+初回実行時はcometのモデルをダウンロードするためやや時間がかかります  
+The first time you run it, it will take some time to download the comet model.  
 
 There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL.
 XCOMET-XXL is a 10.7B model and cannot run on a GPU with around 15GB of memory, so this is commented out.
@@ -250,7 +266,6 @@ wmt23はSNSや広告文などの非フォーマルな文章が多く含まれる
 wmt23 contains more informal texts such as SNS and advertising copy.
 
 
-
 # 謝辞(Acknowledgements)
 
 このプロジェクトで利用させて頂いた以下のプロジェクト、データセット、及びデータセットの元文章の著作者に感謝します  
@@ -262,9 +277,4 @@ We would like to thank the following projects, datasets, and authors of the orig
 - [wmt23](https://www2.statmt.org/wmt23/mtdata/)
 - [mjpost/sacrebleu](https://github.com/mjpost/sacrebleu)
 - [Unbabel/COMET](https://github.com/Unbabel/COMET)
-
-
-
-
-
 
