@@ -30,31 +30,31 @@ This project is not doing anything special.
 ## 簡単な使い方 (How to use simple version)
 
 ```
-# datasets download
+# (1)datasets download
 python3 1_datasetup.py
 
-# あなたの環境で翻訳を行う
+# (2)あなたの環境で翻訳を行う
 # dataset/use配下の好きな.refファイルと.srcファイルをwork/配下にコピーし、翻訳結果を拡張子hypファイルとして保存する
 # transformers用(2_1_transformer_translate_sample.py)とgguf用(2_2_gguf_translate_sample.py)のサンプルスクリプトがあります
-
-mkdir work
-cp dataset/use/<your_target_file>.src ./work
-cp dataset/use/<your_target_file>.ref ./work
-
 # Translate in your environment
 # Copy any .ref and .src files under dataset/use to work/ and save the translation results as a .hyp file.
 # There are sample scripts for transformers(2_1_transformer_translate_sample.py) and gguf(2_2_gguf_translate_sample.py)
 
-# Running the benchmark
+# for example
+# mkdir work
+# cp dataset/use/<your_target_file>.src ./work
+# cp dataset/use/<your_target_file>.ref ./work
+# python3 2_1_transformer_translate_sample.py  --input work --output work --config conf/2_1_transformer_translate_sample.conf
+
+# (3)Running the benchmark
 python3 3_eval.py
 
-# show result
+# (4)show result
 python3 4_result.py
 
 ```
 
 ## 使い方 詳細版 (How to use detailed version)
-
 
 ### (1)データセットのダウンロード(Download the dataset)
 
@@ -103,8 +103,6 @@ If you use your own datasets, they must adhere to the following naming conventio
 Original text: <Dataset name_(enja or jaen).src>
 Reference translation text: <Dataset name_(enja or jaen).ref>
 ```
-
-
 
 ### (2)Translate
 
@@ -195,7 +193,7 @@ cometは三種類存在します。最初に発表されたcomet(wmt22-comet-da)
 XCOMET-XXLは10.7Bサイズのモデルであり 15GB程度のGPUメモリでは動かす事ができないのでコメントにしてあります
 
 初回実行時はcometのモデルをダウンロードするためやや時間がかかります  
-The first time you run it, it will take some time to download the comet model.  
+The first time you run it, it will take some time to download the comet model.   
 
 There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL.
 XCOMET-XXL is a 10.7B model and cannot run on a GPU with around 15GB of memory, so this is commented out.
