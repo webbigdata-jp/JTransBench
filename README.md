@@ -1,6 +1,6 @@
 # JTransBench
 
-機械翻訳モデルの日本語翻訳ベンチマークスコアを簡単に測定するためのツール群
+機械翻訳モデルの日本語翻訳ベンチマークスコアを簡単に測定するためのツール群  
 A set of tools to easily measure the Japanese translation benchmark scores of machine translation models
 
 ## セットアップ(Setup)
@@ -95,8 +95,8 @@ flores200v1-enja.hyp
 If you translated flores200v1-enja.src, save it as flores200v1-enja.hyp in the work directory.
 
 翻訳作業終了時には
-・同名で拡張子だけ異なるsrc, ref, hypの3種類のファイルがwork配下に存在する
-・各ファイルは同じ行数
+- 同名で拡張子だけ異なるsrc, ref, hypの3種類のファイルがwork配下に存在する
+- 各ファイルは同じ行数
 になっている必要があります
 
 When the translation is complete,
@@ -111,9 +111,11 @@ Below is a sample script for translating models in transformers and gguf formats
 Please modify the configuration file stored under conf as appropriate and run your own model.
 
 
-2_1_transformer_translate_sample.py
+#### 2_1_transformer_translate_sample.py
+同名の設定ファイルがconf以下にあるので適宜変更してください
+There is a configuration file with the same name under conf, so please change it as appropriate.
 
-実行には以下のライブラリの追加インストールが必要です
+実行には以下のライブラリの追加インストールが必要です  
 The following libraries must be installed to run the program
 
 ```
@@ -125,11 +127,16 @@ python3 2_1_transformer_translate_sample.py  --input work --output work --config
 ```
 
 
-2_2_gguf_translate_sample.py
+#### 2_2_gguf_translate_sample.py
+同名の設定ファイルがconf以下にあるので適宜変更してください
+There is a configuration file with the same name under conf, so please change it as appropriate.  
+
 実行にはllama.cppのインストールが必要です
 llama.cpp must be installed to run.
 
 ```
+ln -s <your_llama.cpp_directory>/llama.cpp/build/bin/llama-cli .
+ln -s  <your_gguf_modelllama>C3TR-Adapter.Q4_K_M.gguf .
 
 python3 2_2_gguf_translate_sample.py --input work --output work --conf conf/2_2_gguf_translate_sample.conf
 ```
@@ -152,7 +159,7 @@ chrF2++ Suitable for evaluating short texts and translations between languages w
 cometは深層学習ベースのモデルで人間の評価に近いとされています。  
 Comet is a deep learning-based model that is said to be close to human evaluation.  
 
-cometの実行にはGPUが必須です。
+cometの実行にはGPUが必須です。  
 A GPU is required to run comet.  
 
 cometは三種類存在し、最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLが存在します。
