@@ -1,0 +1,3 @@
+fairseq==0.12.2
+sacrebleu[ja]==2.4.2
+unbabel-comet==2.2.2

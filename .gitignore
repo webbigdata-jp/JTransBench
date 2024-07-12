@@ -1,3 +1,10 @@
+work
+old
+*.gguf
+dataset
+llama-cli
+*.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
