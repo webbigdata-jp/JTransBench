@@ -4,7 +4,7 @@
 Tools for easily benchmarking Japanese translation scores  
 
 
-## Setup
+## セットアップ(Setup)
 
 (1) 仮想環境作成(option) (Create a virtual environment (optional))
 
@@ -20,6 +20,11 @@ pip install -r requirements.txt
 ```
 
 ## 使い方 (How to use)
+
+```
+
+
+```
 
 ### (1)データセットのダウンロード(Download the dataset)
 
@@ -68,7 +73,7 @@ Reference translation text: <Dataset name_(enja or jaen).ref>
 
 
 
-### 2_Translate
+### (2)Translate
 
 翻訳作業はあなた独自のモデル／環境で好きな形式で実施する事ができます
 You can translate in your own model/environment in any format you like.
@@ -119,16 +124,20 @@ llama.cpp must be installed to run.
 python3 2_2_gguf_translate_sample.py --input work --output work --conf conf/2_2_gguf_translate_sample.conf
 ```
 
-### 3_eval.py
-3_eval.py
+### (3)評価(eval)
 
-spBLEU, chrf++, cometの三指標で評価をおこないます
+```
+python 3_eval.py
+```
+
+spBLEU, chrf++, cometの三指標で評価をおこないます  
+Evaluation is based on three indicators: spBLEU, chrf++, and comet.  
 
 spBLEUは最もよく使われているBLEUスコアの改良版です
 spBLEU is an improved version of the most popular BLEU score.
 
 chrF2++短いテキストや文法が異なる言語間での翻訳評価に適しています
-chrF2++ Suitable for evaluating short texts and translations between languages with different grammar
+chrF2++ Suitable for evaluating short texts and translations between languages with different grammar.
 
 cometは深層学習ベースのモデルで人間の評価に近いとされています。  
 Comet is a deep learning-based model that is said to be close to human evaluation.  
@@ -141,7 +150,6 @@ XCOMET-XXLは10.7Bサイズのモデルであり 15GB程度のGPUメモリでは
 
 There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL.
 XCOMET-XXL is a 10.7B model and cannot run on a GPU with around 15GB of memory, so this is commented out.
-
 
 3_eval.pyを実行するとworkディレクトリ配下の*.srcと*.refの各ペアに対して以下のファイルが出来ます
 When you run 3_eval.py, the following files are created for each pair of *.src and *.ref in the work directory.
@@ -172,53 +180,41 @@ mytest jaen 36.0 59.9 0.8246 0.8872
 ```
 
 
-## 補足(Notes)
+## データセットに関する補足(Notes for datasets)
 
-3つ決めることがある
+(1)flores200
+meta社が作った超多言語翻訳能力をベンチマークするデータ  
+1012の例文が204の言語に翻訳されているため多言語翻訳能力を試す際によく使われる  
+元文章はニュース記事などのフォーマルよりの文章  
 
-(1)どのデータをつかってテストするか？
-(2)どの指標を使ってテストするか？
-(3)どのツールを使ってテストするか？
-
-(1)どのデータをつかってテストするか？
-自作データ使ってテストするのも有効ですが、他のモデルが発表してくれている指標と比較する事ができない
-ので有名なデータを使ってやることも必要。大きく分けて2つある。
-
-1-1)flores200
-meta社が作った超多言語翻訳能力をベンチマークするデータ
-1012の例文が204の言語に翻訳されているため多言語翻訳能力を試す際によく使われる
-元文章はニュース記事などのフォーマルよりの文章
-
-2024-05-13時点の最新版としてVersion2が公開されている(本PJではまだ未対応)
-主にデータが少ない低リソース言語に焦点をあてている。
-事前トレーニングデータとして収集される事を防ぐため、 パスワード付きのファイルで提供されており
-パブリックなサイトへの転載も禁止されている
-
-1-2)WMT(Workshop on Machine Translation)
-WMT（Workshop on Machine Translation）は、機械翻訳の最新の研究と技術を紹介する国際会議で、毎年開催
-されている。同時に翻訳競技会も開催され、その競技会で使用されたデータが終了後に公開される。
-例えば、2023年のデータは「wmt23」となる
-
-WMTのデータは多様な言語ペアが存在し、ダウンロード元や公開タイミングがわかりにくいことが多いため、>データを効率的にダウンロードするためのツールが存在するほど。
-
-wmt22はニュース記事などのフォーマルよりの文章
-
-(2)どの指標を使ってテストするか？
-指標は沢山あるが、 一長一短
-様々な新しい指標が発表されているので網羅は難しいが、ツールが決まれば利用可能な指標も自然と決まる
-私が意識しているのは下記
-spBLEU, chrf++, comet(Unbabel/wmt22-comet-da,  Unbabel/XCOMET-XL, Unbabel/XCOMET-XXL)
-
-cometは人間の評価に近い計測ができるとされているが、GPUが必須で一番大きいXCOMET-XXLは
-15GB程度のGPUメモリでは動かす事ができない
-
-(3)どのツールを使ってテストするか？
-flores200の説明書の中で言及されているfairseq + sacrebleu及びUnbabel/COMETを私は使っています
+Data created by Meta to benchmark ultra-multilingual translation capabilities  
+1012 example sentences translated into 204 languages, often used to test multilingual translation capabilities  
+Original texts are more formal, such as news articles  
 
 
+2024-05-13時点の最新版としてVersion2が公開されている(本PJではまだ未対応)  
+主にデータが少ない低リソース言語に焦点をあてている。  
+事前トレーニングデータとして収集される事を防ぐため、 パスワード付きのファイルで提供されておりパブリックなサイトへの転載も禁止されている  
+Version 2 has been released as the latest version as of 2024-05-13 (not yet supported in this project).  
+It mainly focuses on low-resource languages with little data.  
+To prevent it from being collected as pre-training data, it is provided as a password-protected file and reproduction on public sites is also prohibited.  
 
 
+(2)WMT(Workshop on Machine Translation)
 
+WMT（Workshop on Machine Translation）は、機械翻訳の最新の研究と技術を紹介する国際会議で、毎年開催されている。同時に翻訳競技会も開催され、その競技会で使用されたデータが終了後に公開される。例えば、2023年のデータは「wmt23」となる
+
+WMT (Workshop on Machine Translation) is an international conference held annually to introduce the latest research and technology in machine translation. At the same time, a translation competition is also held, and the data used in the competition is made public after the competition ends. For example, the data for 2023 will be called "wmt23".
+
+WMTのデータは多様な言語ペアが存在し、ダウンロード元や公開タイミングがわかりにくいことが多いため、データを効率的にダウンロードするためのツールが存在するほど。  
+WMT data is available in a variety of language pairs, and the download source and release timing are often unclear, so there are tools to download the data efficiently.  
+
+wmt22はニュース記事などのフォーマルよりの文章  
+wmt22 contains more formal texts such as news articles.  
+
+
+wmt23はSNSや広告文などの非フォーマルな文章が多く含まれる  
+wmt23 contains more informal texts such as SNS and advertising copy.
 
 
 
