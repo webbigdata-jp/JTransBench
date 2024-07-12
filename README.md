@@ -1,8 +1,7 @@
 # JTransBench
 
-日本語翻訳スコアを簡単にベンチマークするためのツール群  
-Tools for easily benchmarking Japanese translation scores  
-
+機械翻訳モデルの日本語翻訳ベンチマークスコアを簡単に測定するためのツール群
+A set of tools to easily measure the Japanese translation benchmark scores of machine translation models
 
 ## セットアップ(Setup)
 
@@ -22,6 +21,14 @@ pip install -r requirements.txt
 ## 使い方 (How to use)
 
 ```
+python3 1_datasetup.py
+
+# dataset/use配下の好きな.refファイルと.srcファイルをwork配下にコピーし、翻訳結果を.hypファイルとして保存する
+# 
+
+python3 3_eval.py
+
+python3 4_result.py
 
 
 ```
@@ -37,6 +44,9 @@ This will download the flores200 dataset into the dataset/original directory.
 
 更に見分けやすいように名称を変更した flores200, wmt22, wmt23の各テストセットがdataset/use以下にコピーされます。  
 The test sets flores200, wmt22, and wmt23, whose names have been changed to make them easier to distinguish, are copied to the dataset/use directory.  
+
+更にtokenizer用のモデルがmodels配下にダウンロードされます。
+
 
 ```
 行数(line number) ファイル名(file name)
