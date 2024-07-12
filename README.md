@@ -29,7 +29,7 @@ python3 1_datasetup.py
 # transformers用(2_1_transformer_translate_sample.py)とgguf用(2_2_gguf_translate_sample.py)のサンプルスクリプトがあります
 
 # Translate in your environment
-# Copy the .ref and .src files you like under dataset/use to work and save the translation results as a .hyp file
+# Copy any .ref and .src files under dataset/use to work/ and save the translation results as a .hyp file.
 # There are sample scripts for transformers(2_1_transformer_translate_sample.py) and gguf(2_2_gguf_translate_sample.py)
 
 # Running the benchmark
@@ -39,7 +39,6 @@ python3 3_eval.py
 python3 4_result.py
 
 ```
-
 
 ## 使い方 詳細版 (How to use detailed version)
 
@@ -81,7 +80,7 @@ Data that has been renamed from flores200 for English-Japanese translation. *.sr
 全部テストするのはかなり時間がかかるので必要なデータだけをwork配下にコピーするのが良いでしょう  
 Testing everything takes a lot of time, so it's a good idea to copy only the data you need to work.
 
-自分自身のデータセットを使う際は下記の命名規則に合わせる必要があります
+自分自身のデータセットを使う際は下記の命名規則に合わせる必要があります  
 If you use your own datasets, they must adhere to the following naming conventions.
 
 ```
@@ -96,8 +95,8 @@ Reference translation text: <Dataset name_(enja or jaen).ref>
 
 ### (2)Translate
 
-翻訳作業はあなた独自のモデル／環境で好きな形式で実施する事ができます
-You can translate in your own model/environment in any format you like.
+翻訳作業はあなた独自のモデル／環境で実施する事ができます  
+You can translate in your own model/environment you like.
 
 もし、flores200v1_enja.srcを翻訳した場合は  
 ```
@@ -107,7 +106,7 @@ flores200v1_enja.hyp
 
 If you translated flores200v1_enja.src, save it as 
 ```
-flores200v1_enja.hyp in the work directory.
+flores200v1_enja.hyp
 ```
 in the work directory.
 
@@ -121,7 +120,7 @@ When the translation is complete,
 - Each file must have the same number of lines.
 
 
-以下はtransformers形式とgguf形式のモデルで翻訳を実施する際のサンプルスクリプトです
+以下はtransformers形式とgguf形式のモデルで翻訳を実施する際のサンプルスクリプトです  
 conf配下に格納されている設定ファイルを適宜改変し、ご自分のモデルを動かしてください
 
 Below is a sample script for translating models in transformers and gguf formats.
@@ -129,11 +128,11 @@ Please modify the configuration file stored under conf as appropriate and run yo
 
 
 #### 2_1_transformer_translate_sample.py
-同名の設定ファイルがconf以下にあるので適宜変更してください
-There is a configuration file with the same name under conf, so please change it as appropriate.
+同名の設定ファイルがconf以下にあるので適宜変更してください  
+There is a configuration file with the same name under conf, so please change it as appropriate.  
 
 実行には以下のライブラリの追加インストールが必要です  
-The following libraries must be installed to run the program
+The following libraries must be installed to run the program  
 
 ```
 peft==0.11.1
@@ -165,12 +164,12 @@ python 3_eval.py
 ```
 
 spBLEU, chrf++, cometの三指標で評価をおこないます  
-Evaluation is based on three indicators: spBLEU, chrf++, and comet.  
+Evaluation is based on three metrics: spBLEU, chrf++, and comet.  
 
 spBLEUは最もよく使われているBLEUスコアの改良版です
 spBLEU is an improved version of the most popular BLEU score.
 
-chrF2++短いテキストや文法が異なる言語間での翻訳評価に適しています
+chrF2++は短いテキストや文法が異なる言語間での翻訳評価に適しています
 chrF2++ Suitable for evaluating short texts and translations between languages with different grammar.
 
 cometは深層学習ベースのモデルで人間の評価に近いとされています。  
@@ -179,7 +178,7 @@ Comet is a deep learning-based model that is said to be close to human evaluatio
 cometの実行にはGPUが必須です。  
 A GPU is required to run comet.  
 
-cometは三種類存在し、最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLが存在します。
+cometは三種類存在します。最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLです。
 XCOMET-XXLは10.7Bサイズのモデルであり 15GB程度のGPUメモリでは動かす事ができないのでコメントにしてあります
 
 There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL.
