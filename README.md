@@ -18,20 +18,31 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 使い方 (How to use)
+## 簡単な使い方 (How to use simple)
 
 ```
+# datasets download
 python3 1_datasetup.py
 
-# dataset/use配下の好きな.refファイルと.srcファイルをwork配下にコピーし、翻訳結果を.hypファイルとして保存する
-# 
+# あなたの環境で翻訳を行う
+# dataset/use配下の好きな.refファイルと.srcファイルをwork/配下にコピーし、翻訳結果を拡張子hypファイルとして保存する
+# transformers用(2_1_transformer_translate_sample.py)とgguf用(2_2_gguf_translate_sample.py)のサンプルスクリプトがあります
 
+# Translate in your environment
+# Copy the .ref and .src files you like under dataset/use to work and save the translation results as a .hyp file
+# There are sample scripts for transformers(2_1_transformer_translate_sample.py) and gguf(2_2_gguf_translate_sample.py)
+
+# Running the benchmark
 python3 3_eval.py
 
+# show result
 python3 4_result.py
 
-
 ```
+
+
+## 使い方 詳細版 (How to use detailed version)
+
 
 ### (1)データセットのダウンロード(Download the dataset)
 
@@ -42,11 +53,11 @@ python3 1_datasetup.py
 これによりflores200データセットがdataset/original以下にダウンロードされます。  
 This will download the flores200 dataset into the dataset/original directory.  
 
+更にtokenizer用のモデルがmodels配下にダウンロードされます。  
+In addition, the model for tokenizer will be downloaded under models.  
+
 更に見分けやすいように名称を変更した flores200, wmt22, wmt23の各テストセットがdataset/use以下にコピーされます。  
 The test sets flores200, wmt22, and wmt23, whose names have been changed to make them easier to distinguish, are copied to the dataset/use directory.  
-
-更にtokenizer用のモデルがmodels配下にダウンロードされます。
-
 
 ```
 行数(line number) ファイル名(file name)
@@ -67,11 +78,11 @@ Data that has been renamed from flores200 for English-Japanese translation. *.sr
 1992 wmt23_jaen.src
 ```
 
-全部を使ってテストするのはかなり時間がかかるので必要なデータだけをwork配下にコピーするのが良いでしょう  
+全部テストするのはかなり時間がかかるので必要なデータだけをwork配下にコピーするのが良いでしょう  
 Testing everything takes a lot of time, so it's a good idea to copy only the data you need to work.
 
 自分自身のデータセットを使う際は下記の命名規則に合わせる必要があります
-If you use your own datasets, they must adhere to the following naming conventions  
+If you use your own datasets, they must adhere to the following naming conventions.
 
 ```
 元の文章: <データセット名称_(enja or jaen).src>
@@ -88,11 +99,17 @@ Reference translation text: <Dataset name_(enja or jaen).ref>
 翻訳作業はあなた独自のモデル／環境で好きな形式で実施する事ができます
 You can translate in your own model/environment in any format you like.
 
-もし、flores200v1-enja.srcを翻訳した場合は
-flores200v1-enja.hyp
+もし、flores200v1_enja.srcを翻訳した場合は  
+```
+flores200v1_enja.hyp 
+```
 と言う名称でworkディレクトリ配下に保存してください
 
-If you translated flores200v1-enja.src, save it as flores200v1-enja.hyp in the work directory.
+If you translated flores200v1_enja.src, save it as 
+```
+flores200v1_enja.hyp in the work directory.
+```
+in the work directory.
 
 翻訳作業終了時には
 - 同名で拡張子だけ異なるsrc, ref, hypの3種類のファイルがwork配下に存在する
