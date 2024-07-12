@@ -198,18 +198,17 @@ The first time you run it, it will take some time to download the comet model.
 There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL.
 XCOMET-XXL is a 10.7B model and cannot run on a GPU with around 15GB of memory, so this is commented out.
 
-3_eval.pyを実行するとworkディレクトリ配下の*.srcと*.refの各ペアに対して以下のファイルが出来ます
-When you run 3_eval.py, the following files are created for each pair of *.src and *.ref in the work directory.
+3_eval.pyを実行するとworkディレクトリ配下の*.srcと*.refの各ペアに対して以下のファイルが出来ます  
+When you run 3_eval.py, the following files are created for each pair of *.src and *.ref in the work directory.  
 
-*.hyp.spBLEU
-*.hyp.chrf
-*.hyp.comet
-*.hyp.xlcomet
-*.hyp.xxlcomet
+- *.hyp.spBLEU
+- *.hyp.chrf
+- *.hyp.comet
+- *.hyp.xlcomet
+- *.hyp.xxlcomet
 
 これらはツールが出力した生の評価データでなので必要に応じて参考にしてください  
-These are the raw evaluation data output by the tool, so please refer to them as needed.
-
+These are the raw evaluation data output by the tool, so please refer to them as needed.  
 
 ### 4_result.py
 
