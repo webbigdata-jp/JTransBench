@@ -177,10 +177,10 @@ python 3_eval.py
 spBLEU, chrf++, cometの三指標で評価をおこないます  
 Evaluation is based on three metrics: spBLEU, chrf++, and comet.  
 
-spBLEUは最もよく使われているBLEUスコアの改良版です
+spBLEUは最もよく使われているBLEUスコアの改良版です  
 spBLEU is an improved version of the most popular BLEU score.
 
-chrF2++は短いテキストや文法が異なる言語間での翻訳評価に適しています
+chrF2++は短いテキストや文法が異なる言語間での翻訳評価に適しています  
 chrF2++ Suitable for evaluating short texts and translations between languages with different grammar.
 
 cometは深層学習ベースのモデルで人間の評価に近いとされています。  
