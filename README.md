@@ -190,13 +190,17 @@ cometの実行にはGPUが必須です。
 A GPU is required to run comet.  
 
 cometは三種類存在します。最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLです。
-XCOMET-XXLは10.7Bサイズのモデルであり 15GB程度のGPUメモリでは動かす事ができないのでコメントにしてあります
+[XCOMET](https://huggingface.co/Unbabel/XCOMET-XXL)は両方ともhuggingfaceでホストされており利用には申請が必要です。
+
+There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL.
+Both [XCOMET](https://huggingface.co/Unbabel/XCOMET-XXL) are hosted on huggingface and require application to use.
+
+XCOMET-XXLは10.7Bサイズのモデルであり15GB程度のGPUメモリでは動かす事ができないので十分なメモリがあるか確認してください
+XCOMET-XXL is a 10.7B model and cannot run on GPU memory of around 15GB. Please make sure you have enough memory.
 
 初回実行時はcometのモデルをダウンロードするためやや時間がかかります  
 The first time you run it, it will take some time to download the comet model.   
 
-There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL.
-XCOMET-XXL is a 10.7B model and cannot run on a GPU with around 15GB of memory, so this is commented out.
 
 3_eval.pyを実行するとworkディレクトリ配下の*.srcと*.refの各ペアに対して以下のファイルが出来ます  
 When you run 3_eval.py, the following files are created for each pair of *.src and *.ref in the work directory.  

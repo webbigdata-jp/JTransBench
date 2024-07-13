@@ -58,7 +58,7 @@ for hyp_file in hyp_files:
 
     if os.path.exists(ref_file) and os.path.exists(src_file):
         subprocess.run(['comet-score', '-s', src_file, '-t', hyp_file, '-r', ref_file, '--batch_size', '32'], stdout=open(comet_output_file, 'w'))
-        subprocess.run(['comet-score', '-s', src_file, '-t', hyp_file, '-r', ref_file, '--batch_size', '2', '--model', 'Unbabel/XCOMET-XL'], stdout=open(xlcomet_output_file, 'w'))
+        #subprocess.run(['comet-score', '-s', src_file, '-t', hyp_file, '-r', ref_file, '--batch_size', '2', '--model', 'Unbabel/XCOMET-XL'], stdout=open(xlcomet_output_file, 'w'))
         #subprocess.run(['comet-score', '-s', src_file, '-t', hyp_file, '-r', ref_file, '--batch_size', '2', '--model', 'Unbabel/XCOMET-XXL'], stdout=open(xxlcomet_output_file, 'w'))
 
 
