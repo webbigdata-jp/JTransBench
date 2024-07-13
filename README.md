@@ -159,8 +159,8 @@ python3 2_1_transformer_translate_sample.py  --input work --output work --config
 同名の設定ファイルがconf以下にあるので適宜変更してください
 There is a configuration file with the same name under conf, so please change it as appropriate.  
 
-実行にはllama.cppのインストールが必要です
-llama.cpp must be installed to run.
+実行には[llama.cpp](https://github.com/ggerganov/llama.cpp)のインストールが必要です  
+[llama.cpp](https://github.com/ggerganov/llama.cpp) must be installed to run.  
 
 ```
 ln -s <your_llama.cpp_directory>/llama.cpp/build/bin/llama-cli .
