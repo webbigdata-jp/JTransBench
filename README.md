@@ -274,12 +274,12 @@ wmt23 contains more informal texts such as SNS and advertising copy.
 
 
 
-本プロジェクトではflores200は全データ(日英以外の全言語のdevデータ＋devtestデータ)をdataset/original以下にダウンロードしています。どのファイルが何の言語なのか確認したい時は[flores200の公式ページ](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)で確認してください
+本プロジェクトではflores200は全データ(日本語と英語を含む全言語のdevデータ＋devtestデータ)をdataset/original以下にダウンロードしています。どのファイルが何の言語なのか確認したい時は[flores200の公式ページ](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)で確認してください
 
 In this project, we download all flores200 data (dev data, devtest data, in all languages) under dataset/original.
 If you want to check which files are in what language, please visit [official flores200 page](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)
 
-wmt22,23はtestセットのみをダウンロードしています。 trainデータは以下の[mtdata](https://www2.statmt.org/wmt23/mtdata/)コマンドでダウンロードできます。 サイズは50GB級になるので注意してください
+wmt22,23はtestセットのみを直接ダウンロードしています。 trainデータは以下の[mtdata](https://www2.statmt.org/wmt23/mtdata/)コマンドでダウンロードできます。 サイズは50GB級になるので注意してください
 
 For wmt22,23, only the TEST set is directly downloaded. Train data can be downloaded with the following [mtdata](https://www2.statmt.org/wmt23/mtdata/) command. Note that the size of the data is in the 50 GB class.
 
