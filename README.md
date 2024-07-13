@@ -269,9 +269,27 @@ WMT data is available in a variety of language pairs, and the download source an
 wmt22はニュース記事などのフォーマルよりの文章  
 wmt22 contains more formal texts such as news articles.  
 
-
 wmt23はSNSや広告文などの非フォーマルな文章が多く含まれる  
 wmt23 contains more informal texts such as SNS and advertising copy.
+
+
+
+本プロジェクトではflores200は全データ(日英以外の全言語のdevデータ＋devtestデータ)をdataset/original以下にダウンロードしています。どのファイルが何の言語なのか確認したい時は[flores200の公式ページ](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)で確認してください
+
+In this project, we download all flores200 data (dev data, devtest data, in all languages) under dataset/original.
+If you want to check which files are in what language, please visit [official flores200 page](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)
+
+wmt22,23はtestセットのみをダウンロードしています。 trainデータは以下の[mtdata](https://www2.statmt.org/wmt23/mtdata/)コマンドでダウンロードできます。 サイズは50GB級になるので注意してください
+
+For wmt22,23, only the TEST set is directly downloaded. Train data can be downloaded with the following [mtdata](https://www2.statmt.org/wmt23/mtdata/) command. Note that the size of the data is in the 50 GB class.
+
+
+```
+pip install -I mtdata==0.4.0
+wget https://www.statmt.org/wmt23/mtdata/mtdata.recipes.wmt23-constrained.yml
+mtdata get-recipe -ri wmt23-jaen -o wmt23-jaen
+mtdata get-recipe -ri wmt23-enja -o wmt23-enja
+```
 
 
 # 謝辞(Acknowledgements)
