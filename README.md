@@ -194,6 +194,7 @@ cometは複数種類が存在しますが、ここでは最初に発表された
 後者の２モデルは利用申請が必要です。  
 - huggingfaceでアカウントを作成し、[XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL)、及び[XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET-XXL)のページで利用申請をおこなう
 - [huggingface-cli loginコマンド](https://huggingface.co/docs/huggingface_hub/quick-start)でログインし、アクセストークンをローカル環境に保存
+
 XCOMET-XL, XCOMET-XXLはディフォルトではコメント化してあるので利用申請が完了した方は3_eval.pyを編集してください  
 
 There are several types of comets, but here we will focus on the first comet (wmt22-comet-da) and the improved versions XCOMET-XL and XCOMET-XXL. The latter two models require an application for use.
