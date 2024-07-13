@@ -189,11 +189,9 @@ Comet is a deep learning-based model that is said to be close to human evaluatio
 cometの実行にはGPUが必須です。  
 A GPU is required to run comet.  
 
-cometは三種類存在します。最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLです。
-[XCOMET](https://huggingface.co/Unbabel/XCOMET-XXL)は両方ともhuggingfaceでホストされており利用には申請が必要です。
+cometは三種類存在します。最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLです。[XCOMET](https://huggingface.co/Unbabel/XCOMET-XXL)は両方ともhuggingfaceでホストされており利用には申請が必要です。XCOMETはコメントにしてあるので利用申請が完了した方は3_eval.pyを編集してください  
 
-There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL.
-Both [XCOMET](https://huggingface.co/Unbabel/XCOMET-XXL) are hosted on huggingface and require application to use.
+There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL. Both [XCOMET](https://huggingface.co/Unbabel/XCOMET-XXL) are hosted on huggingface and require application to use. XCOMET has been commented out, so if you have completed the usage application, please edit 3_eval.py  
 
 XCOMET-XXLは10.7Bサイズのモデルであり15GB程度のGPUメモリでは動かす事ができないので十分なメモリがあるか確認してください
 XCOMET-XXL is a 10.7B model and cannot run on GPU memory of around 15GB. Please make sure you have enough memory.
