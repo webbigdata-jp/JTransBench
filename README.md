@@ -33,12 +33,13 @@ This project is not doing anything special.
 # (1)datasets download
 python3 1_datasetup.py
 
-# (2)あなたの環境で翻訳を行う
-# dataset/use配下の好きな.refファイルと.srcファイルをwork/配下にコピーし、翻訳結果を拡張子hypファイルとして保存する
-# transformers用(2_1_transformer_translate_sample.py)とgguf用(2_2_gguf_translate_sample.py)のサンプルスクリプトがあります
+# (2)Translate in your environment
 # Translate in your environment
 # Copy any .ref and .src files under dataset/use to work/ and save the translation results as a .hyp file.
 # There are sample scripts for transformers(2_1_transformer_translate_sample.py) and gguf(2_2_gguf_translate_sample.py)
+#
+# dataset/use配下の好きな.refファイルと.srcファイルをwork/配下にコピーし、翻訳結果を拡張子hypファイルとして保存する
+# transformers用(2_1_transformer_translate_sample.py)とgguf用(2_2_gguf_translate_sample.py)のサンプルスクリプトがあります
 
 # for example
 # mkdir work
@@ -71,13 +72,13 @@ In addition, the model for tokenizer will be downloaded under models.
 更に見分けやすいように名称を変更した flores200, wmt22, wmt23の各テストセットがdataset/use以下にコピーされます。  
 The test sets flores200, wmt22, and wmt23, whose names have been changed to make them easier to distinguish, are copied to the dataset/use directory.  
 
+例えばflores200v1-enjaとはflores200を英日翻訳用に名称変更したデータ。flores200v1-enja.srcが元の英語文。flores200v1-enja.refが参照用の日本語訳文  
+For example, flores200v1-enja is the data of flores200 renamed for English-Japanese translation. flores200v1-enja.src is the original English text and flores200v1-enja.ref is the Japanese translation for reference.  
+
 ```
 行数(line number) ファイル名(file name)
 1012 flores200v1-enja.ref
 1012 flores200v1-enja.src
-flores200を英日翻訳用に名称変更したデータ。*.srcが元の英語。*.refが参照用の日本語訳。以下同様  
-Data that has been renamed from flores200 for English-Japanese translation. *.src is the original English. *.ref is the Japanese translation for reference. Same below.  
-
 1012 flores200v1_jaen.ref
 1012 flores200v1_jaen.src
 2037 wmt22_enja.ref
@@ -104,7 +105,7 @@ Original text: <Dataset name_(enja or jaen).src>
 Reference translation text: <Dataset name_(enja or jaen).ref>
 ```
 
-### (2)Translate
+### (2)翻訳(Translate)
 
 翻訳作業はあなた独自のモデル／環境で実施する事ができます  
 You can translate in your own model/environment you like.
@@ -220,13 +221,13 @@ When you run 3_eval.py, the following files are created for each pair of *.src a
 これらはツールが出力した生の評価データでなので必要に応じて参考にしてください  
 These are the raw evaluation data output by the tool, so please refer to them as needed.  
 
-### 4_result.py
+### (4)結果(result)
 
 ```
 python3 4_result.py
 ```
 
-4_result.pyを実行すると3で作成した各評価データを読みこんで整形して出力します。  
+4_result.pyを実行すると3で作成した各評価結果データを読みこんで整形して出力します。  
 When you run 4_result.py, it will read the evaluation data created in 3, format it, and output it.  
 
 ```
