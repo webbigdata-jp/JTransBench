@@ -175,8 +175,8 @@ python3 2_2_gguf_translate_sample.py --input work --output work --conf conf/2_2_
 python 3_eval.py
 ```
 
-spBLEU, chrf++, cometの三指標で評価をおこないます  
-Evaluation is based on three metrics: spBLEU, chrf++, and comet.  
+spBLEU, chrF2++, cometの三指標で評価をおこないます  
+Evaluation is based on three metrics: spBLEU, chrF2++, and comet.  
 
 spBLEUは最もよく使われているBLEUスコアの改良版です  
 spBLEU is an improved version of the most popular BLEU score.
@@ -192,15 +192,15 @@ A GPU is required to run comet.
 
 cometは複数種類が存在しますが、ここでは最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLを対象にします。
 後者の２モデルは利用申請が必要です。  
-- huggingfaceでアカウントを作成し、[XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL)、及び[XCOMET-XLL](https://huggingface.co/Unbabel/XCOMET-XLL)のページで利用申請をおこなう
+- huggingfaceでアカウントを作成し、[XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL)、及び[XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET-XXL)のページで利用申請をおこなう
 - [huggingface-cli loginコマンド](https://huggingface.co/docs/huggingface_hub/quick-start)でログインし、アクセストークンをローカル環境に保存
-XCOMET-XL, XCOMET-XXLTはディフォルトではコメント化してあるので利用申請が完了した方は3_eval.pyを編集してください  
+XCOMET-XL, XCOMET-XXLはディフォルトではコメント化してあるので利用申請が完了した方は3_eval.pyを編集してください  
 
 There are several types of comets, but here we will focus on the first comet (wmt22-comet-da) and the improved versions XCOMET-XL and XCOMET-XXL. The latter two models require an application for use.
-- Create an account on huggingface and visit the [XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL) and [XCOMET-XLL](https://huggingface.co/Unbabel/XCOMET- XLLL) page.
+- Create an account on huggingface and visit the [XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL) and [XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET- XXL) page.
 - Log in with [huggingface-cli login command](https://huggingface.co/docs/huggingface_hub/quick-start) and save the access token in your local environment.
 
-XCOMET-XL and XCOMET-XXLT are commented by default, so please edit 3_eval.py if you have completed the application.
+XCOMET-XL and XCOMET-XXL are commented by default, so please edit 3_eval.py if you have completed the application.
 
 XCOMET-XXLは10.7Bサイズのモデルであり15GB程度のGPUメモリでは動かす事ができないので十分なメモリがあるか確認してください
 XCOMET-XXL is a 10.7B model and cannot run on GPU memory of around 15GB. Please make sure you have enough memory.
