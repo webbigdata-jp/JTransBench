@@ -189,9 +189,17 @@ Comet is a deep learning-based model that is said to be close to human evaluatio
 cometの実行にはGPUが必須です。  
 A GPU is required to run comet.  
 
-cometは三種類存在します。最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLです。[XCOMET](https://huggingface.co/Unbabel/XCOMET-XXL)は両方ともhuggingfaceでホストされており利用には申請が必要です。XCOMETはコメントにしてあるので利用申請が完了した方は3_eval.pyを編集してください  
+cometは複数種類が存在しますが、ここでは最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLを対象にします。
+後者の２モデルは利用申請が必要です。  
+- huggingfaceでアカウントを作成し、[XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL)、及び[XCOMET-XLL](https://huggingface.co/Unbabel/XCOMET-XLL)のページで利用申請をおこなう
+- [huggingface-cli loginコマンド](https://huggingface.co/docs/huggingface_hub/quick-start)でログインし、アクセストークンをローカル環境に保存
+XCOMET-XL, XCOMET-XXLTはディフォルトではコメント化してあるので利用申請が完了した方は3_eval.pyを編集してください  
 
-There are three types of comet: the first announced comet (wmt22-comet-da), the improved versions XCOMET-XL and XCOMET-XXL. Both [XCOMET](https://huggingface.co/Unbabel/XCOMET-XXL) are hosted on huggingface and require application to use. XCOMET has been commented out, so if you have completed the usage application, please edit 3_eval.py  
+There are several types of comets, but here we will focus on the first comet (wmt22-comet-da) and the improved versions XCOMET-XL and XCOMET-XXL. The latter two models require an application for use.
+- Create an account on huggingface and visit the [XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL) and [XCOMET-XLL](https://huggingface.co/Unbabel/XCOMET- XLLL) page.
+- Log in with [huggingface-cli login command](https://huggingface.co/docs/huggingface_hub/quick-start) and save the access token in your local environment.
+
+XCOMET-XL and XCOMET-XXLT are commented by default, so please edit 3_eval.py if you have completed the application.
 
 XCOMET-XXLは10.7Bサイズのモデルであり15GB程度のGPUメモリでは動かす事ができないので十分なメモリがあるか確認してください
 XCOMET-XXL is a 10.7B model and cannot run on GPU memory of around 15GB. Please make sure you have enough memory.
