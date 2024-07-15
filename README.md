@@ -165,7 +165,7 @@ There is a configuration file with the same name under conf, so please change it
 
 ```
 ln -s <your_llama.cpp_directory>/llama.cpp/build/bin/llama-cli .
-ln -s  <your_gguf_modelllama>C3TR-Adapter.Q4_K_M.gguf .
+ln -s <your_gguf_modelllama>C3TR-Adapter.Q4_K_M.gguf .
 
 python3 2_2_gguf_translate_sample.py --input work --output work --conf conf/2_2_gguf_translate_sample.conf
 ```
@@ -261,11 +261,14 @@ To prevent it from being collected as pre-training data, it is provided as a pas
 (2)NTREX-128(News Text References of English into X Languages)
 
 Microsoftが作った英語原文と原文を128言語に翻訳したデータセット  
-タイトルにあるように「英語から言語Xへ翻訳」の評価を目的としている。
+タイトルにあるように「英語から言語Xへ翻訳」の評価を目的としている
 つまり、英日翻訳の評価のみで日英としては使う事は推奨されない  
+フォーマル寄りの文章で難解な言い回しが多い  
 
-A dataset created by Microsoft that contains English source text and translations of the source text into 128 languages.  As the title suggests, this dataset is intended to evaluate "translation from English to language X."   
+A dataset created by Microsoft that contains English source text and translations of the source text into 128 languages.    
+As the title suggests, this dataset is intended to evaluate "translation from English to language X."   
 In other words, it is not recommended to use it as a Japanese-English translation, but only to evaluate English-Japanese translation.  
+The writing is formal and contains many difficult expressions.  
 
 (3)WMT(Workshop on Machine Translation)
 
@@ -289,10 +292,13 @@ wmt23 contains more informal texts such as SNS and advertising copy.
 In this project, we download all flores200 data (dev data, devtest data, in all languages) under dataset/original.
 If you want to check which files are in what language, please visit [official flores200 page](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)
 
+また、NTREX-128も```external/NTREX/NTREX-128/```に全データをダウンロードしています。どのファイルが何の言語かの対応表は```external/NTREX/LANGUAGES.tsv```を確認してください。   
+Also, all data for NTREX-128 has been downloaded to ```external/NTREX/NTREX-128/```. Please check ```external/NTREX/LANGUAGES.tsv``` for a table showing which files are in which languages.  
+
+
 wmt22,23はtestセットのみを直接ダウンロードしています。 trainデータは以下の[mtdata](https://www2.statmt.org/wmt23/mtdata/)コマンドでダウンロードできます。 サイズは50GB級になるので注意してください
 
 For wmt22,23, only the TEST set is directly downloaded. Train data can be downloaded with the following [mtdata](https://www2.statmt.org/wmt23/mtdata/) command. Note that the size of the data is in the 50 GB class.
-
 
 ```
 pip install -I mtdata==0.4.0
@@ -300,7 +306,6 @@ wget https://www.statmt.org/wmt23/mtdata/mtdata.recipes.wmt23-constrained.yml
 mtdata get-recipe -ri wmt23-jaen -o wmt23-jaen
 mtdata get-recipe -ri wmt23-enja -o wmt23-enja
 ```
-
 
 # 謝辞(Acknowledgements)
 
@@ -314,3 +319,4 @@ We would like to thank the following projects, datasets, and authors of the orig
 - [mjpost/sacrebleu](https://github.com/mjpost/sacrebleu)
 - [Unbabel/COMET](https://github.com/Unbabel/COMET)
 - [MicrosoftTranslator/NTREX](https://github.com/MicrosoftTranslator/NTREX)
+- [Open Language Data Initiative](https://oldi.org/)
