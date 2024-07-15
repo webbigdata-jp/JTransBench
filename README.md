@@ -89,6 +89,8 @@ For example, flores200v1-enja is the data of flores200 renamed for English-Japan
 2074 wmt23_enja.src
 1992 wmt23_jaen.ref
 1992 wmt23_jaen.src
+1997 NTREX-128_enja.ref
+1997 NTREX-128_enja.src
 ```
 
 全部テストするのはかなり時間がかかるので必要なデータだけをwork配下にコピーするのが良いでしょう  
@@ -130,7 +132,6 @@ in the work directory.
 When the translation is complete,
 - Three files with the same name but different extensions, src, ref, and hyp, must exist in the work directory.
 - Each file must have the same number of lines.
-
 
 以下はtransformers形式とgguf形式のモデルで翻訳を実施する際のサンプルスクリプトです  
 conf配下に格納されている設定ファイルを適宜改変し、ご自分のモデルを動かしてください
@@ -250,15 +251,23 @@ Data created by Meta to benchmark ultra-multilingual translation capabilities
 Original texts are more formal, such as news articles  
 
 
-2024-05-13時点の最新版としてVersion2が公開されている(本PJではまだ未対応)  
+2024-05-13時点の最新版としてVersion2が公開されている(本PJではまだ未)  
 主にデータが少ない低リソース言語に焦点をあてている。  
-事前トレーニングデータとして収集される事を防ぐため、 パスワード付きのファイルで提供されておりパブリックなサイトへの転載も禁止されている  
+事前トレーニングデータとして収集される事を防ぐため、 パスワード付きのファイルで提供されておりクロールが容易なサイトへの転載も禁止されている  
 Version 2 has been released as the latest version as of 2024-05-13 (not yet supported in this project).  
 It mainly focuses on low-resource languages with little data.  
 To prevent it from being collected as pre-training data, it is provided as a password-protected file and reproduction on public sites is also prohibited.  
 
+(2)NTREX-128(News Text References of English into X Languages)
 
-(2)WMT(Workshop on Machine Translation)
+Microsoftが作った英語原文と原文を128言語に翻訳したデータセット  
+タイトルにあるように「英語から言語Xへ翻訳」の評価を目的としている。
+つまり、英日翻訳の評価のみで日英としては使う事は推奨されない  
+
+A dataset created by Microsoft that contains English source text and translations of the source text into 128 languages.  As the title suggests, this dataset is intended to evaluate "translation from English to language X."   
+In other words, it is not recommended to use it as a Japanese-English translation, but only to evaluate English-Japanese translation.  
+
+(3)WMT(Workshop on Machine Translation)
 
 WMT（Workshop on Machine Translation）は、機械翻訳の最新の研究と技術を紹介する国際会議で、毎年開催されている。同時に翻訳競技会も開催され、その競技会で使用されたデータが終了後に公開される。例えば、2023年のデータは「wmt23」となる
 
@@ -304,4 +313,4 @@ We would like to thank the following projects, datasets, and authors of the orig
 - [wmt23](https://www2.statmt.org/wmt23/mtdata/)
 - [mjpost/sacrebleu](https://github.com/mjpost/sacrebleu)
 - [Unbabel/COMET](https://github.com/Unbabel/COMET)
-
+- [MicrosoftTranslator/NTREX](https://github.com/MicrosoftTranslator/NTREX)

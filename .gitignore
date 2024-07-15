@@ -4,6 +4,7 @@ old
 dataset
 llama-cli
 *.log
+memo.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

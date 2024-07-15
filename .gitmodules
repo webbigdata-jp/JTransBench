@@ -1,3 +1,6 @@
 [submodule "external/fairseq"]
 	path = external/fairseq
 	url = https://github.com/facebookresearch/fairseq.git
+[submodule "external/NTREX"]
+	path = external/NTREX
+	url = https://github.com/MicrosoftTranslator/NTREX
