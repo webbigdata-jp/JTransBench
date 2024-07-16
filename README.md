@@ -308,7 +308,7 @@ mtdata get-recipe -ri wmt23-enja -o wmt23-enja
 
 ## 比較用データ(Comparison data)
 
-[](images/flores_wmt23_bleu.png)  
+![Comparison image](images/flores_wmt23_bleu.png)  
 
 ベンチマーク実行時の詳細設定が不明なため、厳密な比較になるわけではありませんが、最新のLLMベースの翻訳モデルがどのくらいの実力を持つかの目安にはなるでしょう   
 
