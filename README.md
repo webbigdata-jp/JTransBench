@@ -238,7 +238,6 @@ mytest enja 25.74 34.7 0.9016 0.8875
 mytest jaen 36.0 59.9 0.8246 0.8872
 ```
 
-
 ## データセットに関する補足(Notes for datasets)
 
 (1)flores200
@@ -301,11 +300,24 @@ wmt22,23はtestセットのみを直接ダウンロードしています。 trai
 For wmt22,23, only the TEST set is directly downloaded. Train data can be downloaded with the following [mtdata](https://www2.statmt.org/wmt23/mtdata/) command. Note that the size of the data is in the 50 GB class.
 
 ```
-pip install -I mtdata==0.4.0
+pip install -I mtdata==0.4.2
 wget https://www.statmt.org/wmt23/mtdata/mtdata.recipes.wmt23-constrained.yml
 mtdata get-recipe -ri wmt23-jaen -o wmt23-jaen
 mtdata get-recipe -ri wmt23-enja -o wmt23-enja
 ```
+
+## 比較用データ(Comparison data)
+
+[](https://cdn-uploads.huggingface.co/production/uploads/630469550907b9a115c91e62/ZqbugHB-X0Sgm_GnBhfz4.png)  
+
+ベンチマーク実行時の詳細設定が不明なため、厳密な比較になるわけではありませんが、最新のLLMベースの翻訳モデルがどのくらいの実力を持つかの目安にはなるでしょう   
+
+Since the detailed settings at the time of benchmark execution are unknown, this is not a strict comparison, but it will give us an idea of how powerful the latest LLM-based translation models are.   
+
+元の画像クレジット Sebastian Ruder(@seb_ruder)   
+Original image credit: Sebastian Ruder (@seb_ruder)
+
+
 
 # 謝辞(Acknowledgements)
 
@@ -314,7 +326,7 @@ We would like to thank the following projects, datasets, and authors of the orig
 
 - [facebookresearch/fairseq](https://github.com/facebookresearch/fairseq)
 - [facebookresearch/flores](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)
-- [wmt22](https://www.statmt.org/wmt22/)
+- [wmt22](https://statmt.org/wmt22/mtdata/)
 - [wmt23](https://www2.statmt.org/wmt23/mtdata/)
 - [mjpost/sacrebleu](https://github.com/mjpost/sacrebleu)
 - [Unbabel/COMET](https://github.com/Unbabel/COMET)
