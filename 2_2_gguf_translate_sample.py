@@ -41,9 +41,9 @@ def process_files(input_dir, output_dir, config):
                 
                 file_name = os.path.basename(input_file_path)
                 if 'enja' in file_name:
-                    instruct_str = "Translate Japanese to English."
-                elif 'jaen' in file_name:
                     instruct_str = "Translate English to Japanese."
+                elif 'jaen' in file_name:
+                    instruct_str = "Translate Japanese English."
                 else:
                     raise ValueError("Filename must contain either 'enja' or 'jaen' to determine the translation direction.")
 
