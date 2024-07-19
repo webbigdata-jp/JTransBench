@@ -204,8 +204,8 @@ There are several types of comets, but here we will focus on the first comet (wm
 
 XCOMET-XL and XCOMET-XXL are commented by default, so please edit 3_eval.py if you have completed the application.
 
-XCOMET-XXLは10.7Bサイズのモデルであり15GB程度のGPUメモリでは動かす事ができないので十分なメモリがあるか確認してください
-XCOMET-XXL is a 10.7B model and cannot run on GPU memory of around 15GB. Please make sure you have enough memory.
+XCOMET-XXLは10.7Bサイズのモデルでありバッチサイズ 2でも43GB程度のGPUメモリを使用していました。  
+XCOMET-XXL is a 10.7B size model and used approximately 43GB of GPU memory even with a batch size of 2.  
 
 初回実行時はcometのモデルをダウンロードするためやや時間がかかります  
 The first time you run it, it will take some time to download the comet model.   
@@ -278,12 +278,11 @@ WMT (Workshop on Machine Translation) is an international conference held annual
 WMTのデータは多様な言語ペアが存在し、ダウンロード元や公開タイミングがわかりにくいことが多いため、データを効率的にダウンロードするためのツールが存在するほど。  
 WMT data is available in a variety of language pairs, and the download source and release timing are often unclear, so there are tools to download the data efficiently.  
 
-wmt22はニュース記事などのフォーマルよりの文章  
-wmt22 contains more formal texts such as news articles.  
+wmt22はフォーマルな文章とカジュアルな文章が混在する文章  
+wmt22 is a mix of formal texts and casual texts.  
 
-wmt23はSNSや広告文などの非フォーマルな文章が多く含まれる  
+wmt23はSNSや広告文などの非フォーマルな文章が多く含まれる文章   
 wmt23 contains more informal texts such as SNS and advertising copy.
-
 
 
 本プロジェクトではflores200は全データ(日本語と英語を含む全言語のdevデータ＋devtestデータ)をdataset/original以下にダウンロードしています。どのファイルが何の言語なのか確認したい時は[flores200の公式ページ](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)で確認してください
@@ -308,7 +307,7 @@ mtdata get-recipe -ri wmt23-enja -o wmt23-enja
 
 ## 比較用データ(Comparison data)
 
-![Comparison image](images/flores_wmt23_bleu.png)  
+![Comparison image](images/c3tr-version3.png)  
 
 ベンチマーク実行時の詳細設定が不明なため、厳密な比較になるわけではありませんが、最新のLLMベースの翻訳モデルがどのくらいの実力を持つかの目安にはなるでしょう   
 
@@ -317,6 +316,19 @@ Since the detailed settings at the time of benchmark execution are unknown, this
 元の画像クレジット Sebastian Ruder(@seb_ruder)   
 Original image credit: Sebastian Ruder (@seb_ruder)
 
+
+本スクリプトで[C3TR-Adapterc version3](https://huggingface.co/webbigdata/C3TR-Adapter)モデルを評価した際の出力例  
+Example output from this script when evaluating a model named [C3TR-Adapterc version3.](https://huggingface.co/webbigdata/C3TR-Adapter)
+
+| filename      | direction | spBLEU | chrF2++ | comet  | xlcomet | xxlcomet |
+|---------------|-----------|--------|---------|--------|---------|----------|
+| flores200v1   | jaen      | 30.65  | 59.7    | 0.8837 | 0.9539  | 0.9353   |
+| flores200v1   | enja      | 35.18  | 43.4    | 0.913  | 0.9072  | 0.9254   |
+| wmt22         | jaen      | 24.63  | 50.3    | 0.8277 | 0.9073  | 0.8824   |
+| wmt22         | enja      | 24.27  | 36.4    | 0.8991 | 0.9073  | 0.9100   |
+| wmt23         | jaen      | 23.36  | 50.1    | 0.8245 | 0.8995  | 0.8746   |
+| wmt23         | enja      | 21.94  | 33.9    | 0.877  | 0.8704  | 0.8839   |
+| NTREX-128     | enja      | 21.58  | 34.9    | 0.8941 | 0.8436  | 0.7861   |
 
 
 # 謝辞(Acknowledgements)
