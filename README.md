@@ -359,6 +359,7 @@ comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4
 | baiden_gpt4o.hyp                   | 0.8854 |
 | baiden_gemini1.5pro.hyp            | 0.5603 |
 | baiden_gemini1.5pro_hand.hyp       | 0.8843 |
+| baiden_bbc_japanese.hyp            | 0.8717 |
 
 #### wmt23-cometkiwi-da-xlによるベンチマーク結果(Benchmark results with wmt23-cometkiwi-da-xl)
 
@@ -374,9 +375,19 @@ comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4
 | baiden_gpt4o.hyp                   | 0.8488 |
 | baiden_gemini1.5pro.hyp            | 0.4864 |
 | baiden_gemini1.5pro_hand.hyp       | 0.8427 |
+| baiden_bbc_japanese.hyp            | 0.8221 |
 
-※gemini1.5proは元文章の冒頭にある署名を最後の行に移動したためスコアが激減しています。そのため、手で修正したものを_hand.hypとして再計測しています。  
-*The score for gemini1.5pro dropped drastically because the signature at the beginning of the original text was moved to the last line. Therefore, the hand-edited version was re-measured as _hand.hyp.  
+
+※1 gemini1.5proは元文章の冒頭にある署名を最後の行に移動したためスコアが激減しています。そのため、手で修正したものを_hand.hypとして再計測しています。  
+*1 The score for gemini1.5pro dropped drastically because the signature at the beginning of the original text was moved to the last line. Therefore, the hand-edited version was re-measured as _hand.hyp.  
+
+※2 baiden_bbc_japaneseは[www.bbc.com/japanese/](https://www.bbc.com/japanese/articles/cgrl55dd3wxo)に掲載された記事のテキストであり、手動で署名の位置を修正しています。  
+*2 baiden_bbc_japanese is the text of the article published on [www.bbc.com/japanese/](https://www.bbc.com/japanese/articles/cgrl55dd3wxo) with the signature position manually corrected.  
+
+baiden_bbc_japanese
+https://www.bbc.com/japanese/articles/cgrl55dd3wxo
+
+
 
 
 # 謝辞(Acknowledgements)
