@@ -67,10 +67,14 @@ python3 1_datasetup.py
 This will download the flores200 dataset into the dataset/original directory.  
 
 更にtokenizer用のモデルがmodels配下にダウンロードされます。  
-In addition, the model for tokenizer will be downloaded under models.  
+In addition, the model for tokenizer will be downloaded under models.   
 
-更に見分けやすいように名称を変更した flores200, wmt22, wmt23の各テストセットがdataset/use以下にコピーされます。  
-The test sets flores200, wmt22, and wmt23, whose names have been changed to make them easier to distinguish, are copied to the dataset/use directory.  
+external/NTREX/NTREX-128にNTREX-128の全データがcloneされます。  
+All data of NTREX-128 will be cloned to external/NTREX/NTREX-128.
+
+更に見分けやすいように名称を変更した flores200, wmt22, wmt23, NTREX-128の各テストセットがdataset/use以下にコピーされます。  
+The test sets flores200, wmt22, wmt23, and NTREX-128 whose names have been changed to make them easier to distinguish, are copied to the dataset/use directory.  
+
 
 例えばflores200v1-enjaとはflores200を英日翻訳用に名称変更したデータ。flores200v1-enja.srcが元の英語文。flores200v1-enja.refが参照用の日本語訳文  
 For example, flores200v1-enja is the data of flores200 renamed for English-Japanese translation. flores200v1-enja.src is the original English text and flores200v1-enja.ref is the Japanese translation for reference.  
@@ -193,14 +197,14 @@ A GPU is required to run comet.
 
 cometは複数種類が存在しますが、ここでは最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLを対象にします。
 後者の２モデルは利用申請が必要です。  
-- huggingfaceでアカウントを作成し、[XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL)、及び[XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET-XXL)のページで利用申請をおこなう
-- [huggingface-cli loginコマンド](https://huggingface.co/docs/huggingface_hub/quick-start)でログインし、アクセストークンをローカル環境に保存
+- [huggingfaceでアカウントを作成](https://huggingface.co/join)し、[XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL)、及び[XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET-XXL)のページで利用申請をおこなう
+- 端末で[huggingface-cli loginコマンド](https://huggingface.co/docs/huggingface_hub/quick-start)でログインし、アクセストークンをローカル環境に保存
 
 XCOMET-XL, XCOMET-XXLはディフォルトではコメント化してあるので利用申請が完了した方は3_eval.pyを編集してください  
 
 There are several types of comets, but here we will focus on the first comet (wmt22-comet-da) and the improved versions XCOMET-XL and XCOMET-XXL. The latter two models require an application for use.
-- Create an account on huggingface and visit the [XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL) and [XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET-XXL) page.
-- Log in with [huggingface-cli login command](https://huggingface.co/docs/huggingface_hub/quick-start) and save the access token in your local environment.
+- [Create an account on huggingface](https://huggingface.co/join) and apply for use on [XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL) and [XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET-XXL) page.
+- Log in with [huggingface-cli login command](https://huggingface.co/docs/huggingface_hub/quick-start) on the terminal and save the access token in your local environment.
 
 XCOMET-XL and XCOMET-XXL are commented by default, so please edit 3_eval.py if you have completed the application.
 
@@ -331,6 +335,50 @@ Example output from this script when evaluating a model named [C3TR-Adapterc ver
 | NTREX-128     | enja      | 21.58  | 34.9    | 0.8941 | 0.8436  | 0.7861   |
 
 
+### 参照フリーモデルによる評価 (Evaluation using reference-free models)
+Cometにはお手本となる参照翻訳文がなくても翻訳の品質を評価できる参照不要評価モデル(Reference-free evaluation model)が存在します。  
+2種の参照不要評価モデルで7/21に発表されたバイデン大統領の声明の翻訳文を評価した結果は以下となります。  
+※両モデルとも利用申請が必要となります。  
+
+Comet has a reference-free evaluation model that can evaluate the quality of a translation even without a reference translation.   
+The results of evaluating the translation of President Biden's statement released on July 21st using two reference-free evaluation models are as follows.  
+*Applications for use of both models are required.  
+
+
+#### wmt22-cometkiwi-daによるベンチマーク結果(Benchmark results with wmt22-cometkiwi-da)
+
+コマンド例(command example)
+```
+comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4o.hyp baiden_gemini1.5pro.hyp baiden_gemini1.5pro_hand.hyp --model Unbabel/wmt22-cometkiwi-da
+```
+
+| モデル名                           | comet score |
+| ---------------------------------- | ------ |
+| baiden_c3tr_v3.hyp                 | 0.8724 |
+| baiden_sonnet3.5.hyp               | 0.8872 |
+| baiden_gpt4o.hyp                   | 0.8854 |
+| baiden_gemini1.5pro.hyp            | 0.5603 |
+| baiden_gemini1.5pro_hand.hyp       | 0.8843 |
+
+#### wmt23-cometkiwi-da-xlによるベンチマーク結果(Benchmark results with wmt23-cometkiwi-da-xl)
+
+コマンド例(command example)
+```
+comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4o.hyp baiden_gemini1.5pro.hyp baiden_gemini1.5pro_hand.hyp --model Unbabel/wmt23-cometkiwi-da-xl
+```
+
+| モデル名                           | comet score |
+| ---------------------------------- | ------ |
+| baiden_c3tr_v3.hyp                 | 0.8158 |
+| baiden_sonnet3.5.hyp               | 0.8543 |
+| baiden_gpt4o.hyp                   | 0.8488 |
+| baiden_gemini1.5pro.hyp            | 0.4864 |
+| baiden_gemini1.5pro_hand.hyp       | 0.8427 |
+
+※gemini1.5proは元文章の冒頭にある署名を最後の行に移動したためスコアが激減しています。そのため、手で修正したものを_hand.hypとして再計測しています。  
+*The score for gemini1.5pro dropped drastically because the signature at the beginning of the original text was moved to the last line. Therefore, the hand-edited version was re-measured as _hand.hyp.  
+
+
 # 謝辞(Acknowledgements)
 
 このプロジェクトで利用させて頂いた以下のプロジェクト、データセット、及びデータセットの元文章の著作者に感謝します  
@@ -344,3 +392,5 @@ We would like to thank the following projects, datasets, and authors of the orig
 - [Unbabel/COMET](https://github.com/Unbabel/COMET)
 - [MicrosoftTranslator/NTREX](https://github.com/MicrosoftTranslator/NTREX)
 - [Open Language Data Initiative](https://oldi.org/)
+
+
