@@ -336,20 +336,19 @@ Example output from this script when evaluating a model named [C3TR-Adapterc ver
 
 
 ### 参照フリーモデルによる評価 (Evaluation using reference-free models)
-Cometにはお手本となる参照翻訳文がなくても翻訳の品質を評価できる参照不要評価モデル(Reference-free evaluation model)が存在します。  
-2種の参照不要評価モデルで7/21に発表されたバイデン大統領の声明の翻訳文を評価した結果は以下となります。  
+Cometにはお手本となる参照翻訳文がなくても翻訳の品質を評価できる参照不要モデル(Reference-free model)が存在します。  
+2種の参照不要モデルで2024年7月21日に発表されたバイデン大統領の選挙戦撤退の声明文の翻訳品質を評価した結果は以下となります。  
 ※両モデルとも利用申請が必要となります。  
 
 Comet has a reference-free evaluation model that can evaluate the quality of a translation even without a reference translation.   
 The results of evaluating the translation of President Biden's statement released on July 21st using two reference-free evaluation models are as follows.  
 *Applications for use of both models are required.  
 
-
 #### wmt22-cometkiwi-daによるベンチマーク結果(Benchmark results with wmt22-cometkiwi-da)
 
 コマンド例(command example)
 ```
-comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4o.hyp baiden_gemini1.5pro.hyp baiden_gemini1.5pro_hand.hyp --model Unbabel/wmt22-cometkiwi-da
+comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4o.hyp baiden_gemini1.5pro.hyp baiden_gemini1.5pro_hand.hyp baiden_bbc_japanese.hyp --model Unbabel/wmt22-cometkiwi-da
 ```
 
 | モデル名                           | comet score |
@@ -365,7 +364,7 @@ comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4
 
 コマンド例(command example)
 ```
-comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4o.hyp baiden_gemini1.5pro.hyp baiden_gemini1.5pro_hand.hyp --model Unbabel/wmt23-cometkiwi-da-xl
+comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4o.hyp baiden_gemini1.5pro.hyp baiden_gemini1.5pro_hand.hyp baiden_bbc_japanese.hyp --model Unbabel/wmt23-cometkiwi-da-xl
 ```
 
 | モデル名                           | comet score |
@@ -384,10 +383,7 @@ comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4
 ※2 baiden_bbc_japaneseは[www.bbc.com/japanese/](https://www.bbc.com/japanese/articles/cgrl55dd3wxo)に掲載された記事のテキストであり、手動で署名の位置を修正しています。  
 *2 baiden_bbc_japanese is the text of the article published on [www.bbc.com/japanese/](https://www.bbc.com/japanese/articles/cgrl55dd3wxo) with the signature position manually corrected.  
 
-baiden_bbc_japanese
-https://www.bbc.com/japanese/articles/cgrl55dd3wxo
-
-
+![reference free comparison image](images/reference-free-comet-score-sample.png)
 
 
 # 謝辞(Acknowledgements)
