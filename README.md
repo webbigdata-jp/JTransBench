@@ -334,6 +334,15 @@ Example output from this script when evaluating a model named [C3TR-Adapterc ver
 | wmt23         | enja      | 21.94  | 33.9    | 0.877  | 0.8704  | 0.8839   |
 | NTREX-128     | enja      | 21.58  | 34.9    | 0.8941 | 0.8436  | 0.7861   |
 
+C3TR-Adapterc_gguf version3 C3TR-Adapter.f16.Q8_0.ggufのベンチマーク例(一部)  
+C3TR-Adapterc_gguf version3 Benchmark example of C3TR-Adapter.f16.Q8_0.gguf (part)  
+
+| filename      | direction | spBLEU | chrF2++ | comet  | xlcomet | xxlcomet |
+|---------------|-----------|--------|---------|--------|---------|----------|
+| flores200v1   | jaen      | 29.84  | 59.2    | 0.8824 | 0.9518  |          |
+| flores200v1   | enja      | 31.92  | 40.7    | 0.9103 | 0.8982  |          |
+| wmt23         | enja      | 16.22  | 30.9    | 0.8742 | 0.8635  |          |
+
 
 ### 参照フリーモデルによる評価 (Evaluation using reference-free models)
 Cometにはお手本となる参照翻訳文がなくても翻訳の品質を評価できる参照不要モデル(Reference-free model)が存在します。  
