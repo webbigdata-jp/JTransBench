@@ -46,10 +46,18 @@ for file_name in os.listdir(work_dir):
         xxlcomet_score = get_score_from_comet(os.path.join(work_dir, base_name + '.hyp.xxlcomet'))
         parts = base_name.split('_')
         bench_name = parts[0]
-        
+
+        import re
+        pattern = r'_(\w{4})$'
+        match = re.search(pattern, base_name)
+
+        direction = ""
+        if match:
+            direction = match.group(1)
+
         results.append({
             'filename': bench_name,
-            'direction': 'jaen' if 'jaen' in base_name else 'enja',
+            'direction': direction,
             'spBLEU': spBLEU_score,
             'chrF2++': chrf_score,
             'comet': comet_score,

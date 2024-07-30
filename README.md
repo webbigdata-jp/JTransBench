@@ -106,9 +106,11 @@ If you use your own datasets, they must adhere to the following naming conventio
 ```
 元の文章: <データセット名称_(enja or jaen).src>
 参照翻訳: <データセット名称_(enja or jaen).ref>
+enja, jaenの部分は方向の判定に使われるので他言語の場合は適宜修正してください  
 
 Original text: <Dataset name_(enja or jaen).src>
 Reference translation text: <Dataset name_(enja or jaen).ref>
+The "enja" and "jaen" parts are used to determine the direction, so please modify them appropriately if you are using other languages.  
 ```
 
 ### (2)翻訳(Translate)
