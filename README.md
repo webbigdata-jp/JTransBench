@@ -69,12 +69,14 @@ This will download the flores200 dataset into the dataset/original directory.
 更にtokenizer用のモデルがmodels配下にダウンロードされます。  
 In addition, the model for tokenizer will be downloaded under models.   
 
-external/NTREX/NTREX-128にNTREX-128の全データがcloneされます。  
-All data of NTREX-128 will be cloned to external/NTREX/NTREX-128.
+external/NTREX/NTREX-128にNTREX-128のリポジトリがcloneされます。  
+NTREX-128 repository will be cloned to external/NTREX/NTREX-128.
 
-更に見分けやすいように名称を変更した flores200, wmt22, wmt23, NTREX-128の各テストセットがdataset/use以下にコピーされます。  
+external/BSDにThe Business Scene Dialogue corpusのリポジトリがクローンされます  
+The Business Scene Dialogue corpus repository will be cloned to external/BSD.
+
+更に見分けやすいように名称を変更した flores200, wmt20, wmt22, wmt23, NTREX-128, bsdの各テストセットがdataset/use以下にコピーされます。  
 The test sets flores200, wmt22, wmt23, and NTREX-128 whose names have been changed to make them easier to distinguish, are copied to the dataset/use directory.  
-
 
 例えばflores200v1-enjaとはflores200を英日翻訳用に名称変更したデータ。flores200v1-enja.srcが元の英語文。flores200v1-enja.refが参照用の日本語訳文  
 For example, flores200v1-enja is the data of flores200 renamed for English-Japanese translation. flores200v1-enja.src is the original English text and flores200v1-enja.ref is the Japanese translation for reference.  
@@ -85,6 +87,10 @@ For example, flores200v1-enja is the data of flores200 renamed for English-Japan
 1012 flores200v1-enja.src
 1012 flores200v1_jaen.ref
 1012 flores200v1_jaen.src
+1000 wmt20_enja.ref
+1000 wmt20_enja.src
+ 993 wmt20_jaen.ref
+ 993 wmt20_jaen.src
 2037 wmt22_enja.ref
 2037 wmt22_enja.src
 2008 wmt22_jaen.ref
@@ -95,6 +101,10 @@ For example, flores200v1-enja is the data of flores200 renamed for English-Japan
 1992 wmt23_jaen.src
 1997 NTREX-128_enja.ref
 1997 NTREX-128_enja.src
+1068 Business_Scene_Dialogue_corpus_enja.ref
+1068 Business_Scene_Dialogue_corpus_enja.src
+1052 Business_Scene_Dialogue_corpus_jaen.ref
+1052 Business_Scene_Dialogue_corpus_jaen.src
 ```
 
 全部テストするのはかなり時間がかかるので必要なデータだけをwork配下にコピーするのが良いでしょう  
@@ -275,7 +285,13 @@ As the title suggests, this dataset is intended to evaluate "translation from En
 In other words, it is not recommended to use it as a Japanese-English translation, but only to evaluate English-Japanese translation.  
 The writing is formal and contains many difficult expressions.  
 
-(3)WMT(Workshop on Machine Translation)
+(3)BSD(Business Scene Dialogue corpus
+
+BSDデータセットは、ビジネスシーンにおける日英間の対話を含むコーパスで、ビジネス会話の自然なやり取りをモデル化することを目的としています。日英のバランスの取れた会話シナリオが含まれており、語学学習や翻訳モデルのトレーニング、評価に使用されます。
+
+The BSD dataset is a corpus containing Japanese-English business dialogues, aiming to model natural business conversations. It contains balanced Japanese-English conversation scenarios and is used for language learning and for training and evaluating translation models.  
+
+(4)WMT(Workshop on Machine Translation)
 
 WMT（Workshop on Machine Translation）は、機械翻訳の最新の研究と技術を紹介する国際会議で、毎年開催されている。同時に翻訳競技会も開催され、その競技会で使用されたデータが終了後に公開される。例えば、2023年のデータは「wmt23」となる
 
@@ -284,11 +300,14 @@ WMT (Workshop on Machine Translation) is an international conference held annual
 WMTのデータは多様な言語ペアが存在し、ダウンロード元や公開タイミングがわかりにくいことが多いため、データを効率的にダウンロードするためのツールが存在するほど。  
 WMT data is available in a variety of language pairs, and the download source and release timing are often unclear, so there are tools to download the data efficiently.  
 
-wmt22はフォーマルな文章とカジュアルな文章が混在する文章  
-wmt22 is a mix of formal texts and casual texts.  
+wmt20はニュース記事の機械翻訳の品質を確かめるデータセットです  
+wmt20 is a dataset that checks the quality of machine translation of news articles  
 
-wmt23はSNSや広告文などの非フォーマルな文章が多く含まれる文章   
-wmt23 contains more informal texts such as SNS and advertising copy.
+wmt22は一般的な文章(ニュース、ソーシャル、会話、e コマース)の機械翻訳の品質を確かめるデータセットです  
+wmt22 is a dataset for assessing the quality of machine translation of general texts (news, social, conversation, e-commerce)  
+
+wmt23も一般的な文章(ニュース、e コマース、ユーザー生成、会話)の機械翻訳の品質を確かめるデータセットです  
+wmt23 is also a dataset to check the quality of machine translation of general texts (news, e-commerce, user-generated, conversation)  
 
 
 本プロジェクトではflores200は全データ(日本語と英語を含む全言語のdevデータ＋devtestデータ)をdataset/original以下にダウンロードしています。どのファイルが何の言語なのか確認したい時は[flores200の公式ページ](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)で確認してください
@@ -299,10 +318,12 @@ If you want to check which files are in what language, please visit [official fl
 また、NTREX-128も```external/NTREX/NTREX-128/```に全データをダウンロードしています。どのファイルが何の言語かの対応表は```external/NTREX/LANGUAGES.tsv```を確認してください。   
 Also, all data for NTREX-128 has been downloaded to ```external/NTREX/NTREX-128/```. Please check ```external/NTREX/LANGUAGES.tsv``` for a table showing which files are in which languages.  
 
+また、Business Scene Dialogue corpusも```external/BSD```に全データをダウンロードしており、開発用データなどを参照できます。  
+In addition, all data of the Business Scene Dialogue corpus has been downloaded to ``external/BSD``, so you can refer to development data, etc.  
 
-wmt22,23はtestセットのみを直接ダウンロードしています。 trainデータは以下の[mtdata](https://www2.statmt.org/wmt23/mtdata/)コマンドでダウンロードできます。 サイズは50GB級になるので注意してください
+wmt20,22,23はtestセットのみを直接ダウンロードしています。 trainデータは以下の[mtdata](https://www2.statmt.org/wmt23/mtdata/)コマンドでダウンロードできます。 サイズは50GB級になるので注意してください
 
-For wmt22,23, only the TEST set is directly downloaded. Train data can be downloaded with the following [mtdata](https://www2.statmt.org/wmt23/mtdata/) command. Note that the size of the data is in the 50 GB class.
+For wmt20,22,23, only the TEST set is directly downloaded. Train data can be downloaded with the following [mtdata](https://www2.statmt.org/wmt23/mtdata/) command. Note that the size of the data is in the 50 GB class.
 
 ```
 pip install -I mtdata==0.4.2
@@ -400,7 +421,7 @@ comet-score -s baiden.src -t baiden_c3tr_v3.hyp baiden_sonnet3.5.hyp baiden_gpt4
 # 謝辞(Acknowledgements)
 
 このプロジェクトで利用させて頂いた以下のプロジェクト、データセット、及びデータセットの元文章の著作者に感謝します  
-We would like to thank the following projects, datasets, and authors of the original documents used in this project: 
+We would like to thank the following projects, datasets, and authors of the original documents used in this project:  
 
 - [facebookresearch/fairseq](https://github.com/facebookresearch/fairseq)
 - [facebookresearch/flores](https://github.com/facebookresearch/flores/blob/main/flores200/README.md)
@@ -409,6 +430,7 @@ We would like to thank the following projects, datasets, and authors of the orig
 - [mjpost/sacrebleu](https://github.com/mjpost/sacrebleu)
 - [Unbabel/COMET](https://github.com/Unbabel/COMET)
 - [MicrosoftTranslator/NTREX](https://github.com/MicrosoftTranslator/NTREX)
+- [tsuruoka-lab/BSD](https://github.com/tsuruoka-lab/BSD)
 - [Open Language Data Initiative](https://oldi.org/)
 
 

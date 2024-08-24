@@ -4,3 +4,6 @@
 [submodule "external/NTREX"]
 	path = external/NTREX
 	url = https://github.com/MicrosoftTranslator/NTREX
+[submodule "external/BSD"]
+        path = external/NTREX
+        url = https://github.com/tsuruoka-lab/BSD
