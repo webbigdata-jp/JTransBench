@@ -19,8 +19,8 @@ subprocess.run(['cp', 'flores200_dataset/devtest/jpn_Jpan.devtest', '../use/flor
 subprocess.run(['cp', 'flores200_dataset/devtest/eng_Latn.devtest', '../use/flores200v1_enja.src'])
 
 # NTREX-128データセットのコピー
-subprocess.run(['cp', '../../external/NTREX/NTREX-128/newstest2019-src.eng.txt', '../use/NTREX-128_enja.src'])
-subprocess.run(['cp', '../../external/NTREX/NTREX-128/newstest2019-ref.jpn.txt', '../use/NTREX-128_enja.ref'])
+subprocess.run(['cp', '../../external/NTREX/NTREX-128/newstest2019-src.eng.txt', '../use/NTREX128_enja.src'])
+subprocess.run(['cp', '../../external/NTREX/NTREX-128/newstest2019-ref.jpn.txt', '../use/NTREX128_enja.ref'])
 
 # BSDデータセットの変換とコピー
 input_file = '../../external/BSD/test.json'
