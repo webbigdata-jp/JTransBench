@@ -362,9 +362,27 @@ C3TR-Adapterc_gguf version3 Benchmark example of C3TR-Adapter.f16.Q8_0.gguf (par
 
 | filename      | direction | spBLEU | chrF2++ | comet  | xlcomet | xxlcomet |
 |---------------|-----------|--------|---------|--------|---------|----------|
-| flores200v1   | jaen      | 29.84  | 59.2    | 0.8824 | 0.9518  |          |
 | flores200v1   | enja      | 31.92  | 40.7    | 0.9103 | 0.8982  |          |
+| flores200v1   | jaen      | 29.84  | 59.2    | 0.8824 | 0.9518  |          |
 | wmt23         | enja      | 16.22  | 30.9    | 0.8742 | 0.8635  |          |
+
+
+[gemma-2-2b-jpn-it-translate](https://huggingface.co/webbigdata/gemma-2-2b-jpn-it-translate) ベンチマーク結果 Benchmark results
+
+| filename    | direction | spBLEU | chrF2++ | comet  | xlcomet |
+|-------------|-----------|--------|---------|--------|---------|
+| flores200v1 | enja      | 28.56  | 37.5    | 0.896  | 0.8512  |
+| flores200v1 | jaen      | 26.38  | 56.6    | 0.8735 | 0.9324  |
+| wmt20       | enja      | 15.62  | 29.1    | 0.8796 | 0.7913  |
+| wmt20       | jaen      | 18.04  | 46.3    | 0.8013 | 0.7815  |
+| wmt22       | enja      | 17.47  | 30.9    | 0.8799 | 0.8581  |
+| wmt22       | jaen      | 19.93  | 46.4    | 0.8107 | 0.8821  |
+| wmt23       | enja      | 15.95  | 28.4    | 0.8585 | 0.8213  |
+| wmt23       | jaen      | 15.54  | 45.2    | 0.8029 | 0.8669  |
+| Business    | enja      | 21.08  | 38.1    | 0.9041 | 0.9178  |
+| Business    | jaen      | 24.27  | 47.5    | 0.8317 | 0.8716  |
+| NTREX128    | enja      | 18.18  | 30.1    | 0.8757 | 0.7709  |
+ 
 
 
 ### 参照フリーモデルによる評価 (Evaluation using reference-free models)
