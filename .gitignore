@@ -1,10 +1,17 @@
+scores
+models
 work
-old
+old*
 *.gguf
 dataset
 llama-cli
 *.log
 memo.txt
+checkpoint-*
+2_1_transformer_translate_v4.conf
+nohup.out
+models
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
