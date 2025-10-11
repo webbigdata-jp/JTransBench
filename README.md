@@ -208,13 +208,13 @@ cometの実行にはGPUが必須です。
 A GPU is required to run comet.  
 
 cometは複数種類が存在しますが、ここでは最初に発表されたcomet(wmt22-comet-da)、改良版のXCOMET-XL, XCOMET-XXLを対象にします。
-後者の２モデルは利用申請が必要です。  
+後者の２モデルは利用申請が必要で且つ非商用利用が条件です。開発元から有料のライセンス契約が必要だとメールで警告が来る場合があるので注意してください。  
 - [huggingfaceでアカウントを作成](https://huggingface.co/join)し、[XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL)、及び[XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET-XXL)のページで利用申請をおこなう
 - 端末で[huggingface-cli loginコマンド](https://huggingface.co/docs/huggingface_hub/quick-start)でログインし、アクセストークンをローカル環境に保存
 
 XCOMET-XL, XCOMET-XXLはディフォルトではコメント化してあるので利用申請が完了した方は3_eval.pyを編集してください  
 
-There are several types of comets, but here we will focus on the first comet (wmt22-comet-da) and the improved versions XCOMET-XL and XCOMET-XXL. The latter two models require an application for use.
+There are several types of comets, but here we will focus on the first comet (wmt22-comet-da) and the improved versions XCOMET-XL and XCOMET-XXL. The latter two models require a license application and are for non-commercial use only. Please note that you may receive an email from the developer warning you that a paid license agreement is required.  
 - [Create an account on huggingface](https://huggingface.co/join) and apply for use on [XCOMET-XL](https://huggingface.co/Unbabel/XCOMET-XL) and [XCOMET-XXL](https://huggingface.co/Unbabel/XCOMET-XXL) page.
 - Log in with [huggingface-cli login command](https://huggingface.co/docs/huggingface_hub/quick-start) on the terminal and save the access token in your local environment.
 
